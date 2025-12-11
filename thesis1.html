@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Skills</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style-responsive3.css" />
+
+  <!-- Navigation Script -->
+  <script src="navigation3.js" defer></script>
+</head>
+<body>
+  <!-- Navigation (Optional Shared Nav) -->
+  <header>
+    <nav>
+      <div class="logo">
+        <a href='/'>MD. AKRAMUL HOQUE</a>
+      </div>
+      <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href='index.html'>Home</a></li>
+        <li><a href='about.html'>About</a></li>
+        <li><a href='education.html'>Education</a></li>
+        <li><a class='active' href='skills.html'>Skills</a></li>
+        <li><a href='contact.html'>Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+    
+<!-- Thesis Section -->
+<section class="thesis-section">
+  <h2>Research Works</h2>
+  <div class="thesis-container">
+    <!-- Thesis Card 1 -->
+    <div class="thesis-card card-glow card-glow-hover card-glow-active">
+      <p>
+        The thesis work is not yet finished, details will be uploaded when finished.<br><h2><Strong >Thank You.</Strong></h2>
+      </p>
+    </div>
+ 
+   
+  <!-- JavaScript -->
+  <script>
+    (function() {
+      const modal = document.getElementById('certModal');
+      const imgEl = document.getElementById('certModalImage');
+      const titleEl = document.getElementById('certModalTitle');
+      const issuerEl = document.getElementById('certModalIssuer');
+      const dateEl = document.getElementById('certModalDate');
+
+      // Open certificate modal
+      window.viewCertificate = function(src, title, issuer, date) {
+        try {
+          if (!modal) return;
+          imgEl.src = src || '';
+          imgEl.alt = title || 'Certificate';
+          titleEl.textContent = title || 'Certificate';
+          issuerEl.textContent = issuer || '';
+          dateEl.textContent = date || '';
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        } catch (_) {}
+      };
+
+      // Close certificate modal
+      window.closeCertificate = function() {
+        if (!modal) return;
+        modal.style.display = 'none';
+        imgEl.src = '';
+        document.body.style.overflow = '';
+      };
+
+      // Close when clicking backdrop
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            window.closeCertificate();
+          }
+        });
+      }
+
+      // Close on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          window.closeCertificate();
+        }
+      });
+    })();
+  </script>
+  
+  <script src="skill-animation.js"></script>
+
+</body>
+</html>

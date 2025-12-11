@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style-responsive.css" />
+  <script src="navigation.js" defer></script>
+  
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+
+    <nav>
+      <div class="logo">
+        <a href='/'>MD. AKRAMUL HOQUE</a>
+      </div>
+      <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href='index.html'>Home</a></li>
+        <li><a href='about.html'>About</a></li>
+        <li><a href='education.html'>Education</a></li>
+        <li><a href='skills.html'>Skills</a></li>
+        <li><a class='active' href='/contact'>Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Contact Me!</h2>
+    <p>Have a question or want to work together? Fill out the form below!</p>
+    <div id="form-container" class="card-glow card-glow-hover card-glow-active">
+      <form name="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Mobile Number"
+            required
+          />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Email Subject"
+            required
+          />
+        </div>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows="5"
+          required
+        ></textarea>
+        <button type="submit" class="contact-submit">Send Message</button>
+      </form>
+    </div>
+    <div id="thank-you" class="thank-you-card">
+      <h2>Thank You!</h2>
+      <p>Your message has been sent successfully. I'll get back to you soon.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <h3>SQA Engineer</h3>
+        <p>&copy; 2025 MD. Akramul Hoque. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://github.com/Akramul-565" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://bd.linkedin.com/in/md-akramul-hoque-reja-18497b232" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.kaggle.com/engrmahreja" class="social-icon"><i class="fab fa-kaggle"></i></a>
+          <a href="https://www.facebook.com/share/1ZKqhPDmts/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/m.a.h._reja?igsh=MTVkaDlrNHhzYjM3dw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="http://youtube.com/@bdjobssolution2001" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="https://gucc.green.edu.bd/executives/221002565" target="_blank" class="social-icon"><i class="fab fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://formspree.io/f/xjkgldva", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+          },
+          body: formData,
+        });
+
+        if (response.ok) {
+          document.getElementById('form-container').style.display = 'none';
+          document.getElementById('thank-you').style.display = 'block';
+        } else {
+          alert('There was a problem submitting your message. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('There was a problem submitting your message. Please try again.');
+      }
+    }
+  </script>
+</body>
+</html>
